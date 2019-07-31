@@ -8,10 +8,10 @@ import imutils
 import cv2 as cv
 
 # 加载原图，可在项目imgs/example02目录下找到
-img=cv.imread("E:\\tmp\\test6.jpg")
+img=cv.imread("imgs/example02/test6.jpg")
 
 # 打印原图
-cv.imshow("orgin",img)
+cv.imshow("orgin", img)
 
 # 灰度化
 gray=cv.cvtColor(img,cv.COLOR_BGR2GRAY)
@@ -20,13 +20,13 @@ gray=cv.cvtColor(img,cv.COLOR_BGR2GRAY)
 cv.imshow("gray",gray)
 
 # 高斯滤波，清除一些杂点
-blur=cv.GaussianBlur(gray,(3,3),0)
+blur = cv.GaussianBlur(gray, (3, 3), 0)
 
 # 自适应二值化算法
-thresh2 = cv.adaptiveThreshold(blur,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY_INV,131,4)
+thresh2 = cv.adaptiveThreshold(blur, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY_INV,131,4)
 
 # 打印二值化后的图
-cv.imshow("thresh2",thresh2)
+cv.imshow("thresh2", thresh2)
 
 # 寻找轮廓
 image, cts, hierarchy = cv.findContours(thresh2, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
